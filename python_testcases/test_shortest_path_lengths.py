@@ -1,11 +1,11 @@
 import pytest
 
-if pytest.use_correct:
-    from correct_python_programs.shortest_path_lengths import shortest_path_lengths
-else:
-    from python_programs.shortest_path_lengths import shortest_path_lengths
+from test_utils import import_program
+
+shortest_path_lengths = import_program('shortest_path_lengths')
 
 
+@pytest.mark.timeout(10)
 def test1():
     """Case 1: Basic graph input."""
 
@@ -62,6 +62,7 @@ def test1():
     assert result == expected
 
 
+@pytest.mark.timeout(10)
 def test2():
     """Case 2: Linear graph input."""
 
@@ -104,6 +105,7 @@ def test2():
     assert result == expected
 
 
+@pytest.mark.timeout(10)
 def test3():
     """Case 3: Disconnected graphs input."""
 
@@ -135,6 +137,7 @@ def test3():
     assert result == expected
 
 
+@pytest.mark.timeout(10)
 def test4():
     """Case 4: Strongly connected graph input."""
 

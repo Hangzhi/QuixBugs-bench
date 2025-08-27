@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import os
+import shlex
+import subprocess
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, Any, Optional
+import tempfile
+import shutil
+
+
+class ClaudeCodeAgent:
+    ALLOWED_TOOLS = ["Bash", "Edit", "Write", "Read", "Glob", "Grep", "LS", 
+                     "WebFetch", "NotebookEdit", "TodoRead", "TodoWrite", "Agent"]
+    
+    def __init__(self, model_name: Optional[str] = None):
+        self.model_name = model_name
+        self.env = self._setup_environment()
+    
+    def _setup_environment(self) -> Dict[str, str]:
+        env = os.environ.copy()
+        if "ANTHROPIC_API_KEY" not in env:
+            raise ValueError("ANTHROPIC_API_KEY environment variable is required")
+        
+        if self.model_name:
+            env["ANTHROPIC_MODEL"] = self.model_name.removeprefix("anthropic/")
+        elif "ANTHROPIC_MODEL" not in env:
+            env["ANTHROPIC_MODEL"] = "claude-3-5-sonnet-20241022"
+        
+        env.update(
+            {"FORCE_AUTO_BACKGROUND_TASKS": "1", 
+            "ENABLE_BACKGROUND_TASKS": "1",
+            "BASH_MAX_TIMEOUT_MS": "20000"
+            })
+        return env
+    
+    def run_agent(self, instruction: str, working_dir: Path) -> Dict[str, Any]:
+        command = (f"timeout 60 claude --verbose --output-format stream-json "
+                  f"-p {shlex.quote(instruction)} --allowedTools {' '.join(self.ALLOWED_TOOLS)}")
+        
+        start_time = time.time()
+        result = {"success": False, "agent_output": None, "duration_ms": 0,
+                 "error": None, "command": command}
+        
+        try:
+            process = subprocess.Popen(command, shell=True, cwd=working_dir,
+                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                     text=True, env=self.env)
+            
+            stdout_lines = []
+            
+            
+            return_code = process.wait()
+            stderr = process.stderr.read()
+            
+            result["duration_ms"] = int((time.time() - start_time) * 1000)
+            full_output = ''.join(stdout_lines)
+            result["agent_output"] = full_output
+            
+            if return_code == 0:
+                result["success"] = True
+            else:
+                result["error"] = f"Process exited with code {return_code}. Stderr: {stderr}"
+        
+                
+        except Exception as e:
+            result["error"] = str(e)
+            result["duration_ms"] = int((time.time() - start_time) * 1000)
+        
+        return result
+
+
+def solve_problem(
+    model_name: str,
+    buggy_program_folder: str,
+    fixed_program_folder: str,
+    program_name: str
+) -> Dict[str, Any]:
+    """
+    Solve a single buggy program using Claude Code.
+    
+    Args:
+        model_name: The Claude model to use
+        buggy_program_folder: Absolute path to folder containing buggy programs
+        fixed_program_folder: Absolute path to folder where fixed programs should be saved
+        program_name: Name of the program to fix (without .py extension)
+        
+    Returns:
+        A dictionary containing the results
+    """
+    # Convert paths to Path objects
+    buggy_folder = Path(buggy_program_folder).absolute()
+    fixed_folder = Path(fixed_program_folder).absolute()
+    
+    # Ensure folders exist
+    if not buggy_folder.exists():
+        raise ValueError(f"Buggy program folder does not exist: {buggy_folder}")
+    
+    fixed_folder.mkdir(parents=True, exist_ok=True)
+    
+    # Check if buggy program exists
+    buggy_program_path = buggy_folder / f"{program_name}.py"
+    if not buggy_program_path.exists():
+        raise ValueError(f"Buggy program not found: {buggy_program_path}")
+    
+    # Read the buggy program
+    with open(buggy_program_path, 'r') as f:
+        buggy_code = f.read()
+    
+    # Create a temporary working directory for the agent
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
+        
+        # Copy the buggy program to temp directory
+        temp_buggy_path = temp_path / f"{program_name}.py"
+        shutil.copy2(buggy_program_path, temp_buggy_path)
+        
+        # Prepare the instruction for Claude - copying file to working dir for reading
+        # Get relative paths from parent directory
+        parent_dir = Path(buggy_folder).parent
+        buggy_rel_path = f"python_programs/{program_name}.py"
+        fixed_rel_path = f"experiments_claude_code/fixed_programs/{program_name}.py"
+        
+        instruction = f"""Task:
+1. Read the buggy program from: {program_name}.py
+2. Analyze the code to identify the ONE line that contains a bug
+3. Fix ONLY that buggy line with a minimal change
+4. Write the complete fixed program to fixed_{program_name}.py
+
+Requirements:
+- The fix should be exactly one line change
+- Do not add comments or make other modifications
+- Ensure the fixed code is syntactically correct and complete
+- The program should maintain the same functionality but with the bug fixed"""
+        
+        # Initialize and run the agent
+        agent = ClaudeCodeAgent(model_name)
+        
+        print(f"Running Claude Code agent to fix {program_name}...")
+        claude_result = agent.run_agent(instruction, temp_path)
+        
+        # Check if the fixed program was created
+        fixed_program_path = fixed_folder / f"{program_name}.py"
+        temp_fixed_path = temp_path / f"fixed_{program_name}.py"
+        success = False
+        error = None
+        
+        if temp_fixed_path.exists():
+            # Copy the fixed program from temp to fixed folder
+            shutil.copy2(temp_fixed_path, fixed_program_path)
+            success = True
+        else:
+            error = f"Fixed file not created: {fixed_program_path}"
+            success = False
+        
+        # Prepare the result
+        result = {
+            "program": program_name,
+            "success": success,
+            "error": error,
+            "claude_result": claude_result,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        # Save the agent log
+        log_file_path = fixed_folder / "agent_log_claude.json"
+        
+        # Load existing results if file exists
+        existing_results = []
+        if log_file_path.exists():
+            try:
+                with open(log_file_path, 'r') as f:
+                    data = json.load(f)
+                    if isinstance(data, dict) and "results" in data:
+                        existing_results = data["results"]
+                    elif isinstance(data, list):
+                        existing_results = data
+            except (json.JSONDecodeError, IOError):
+                pass
+        
+        # Append new result
+        existing_results.append(result)
+        
+        # Save updated results
+        log_data = {
+            "results": existing_results
+        }
+        
+        with open(log_file_path, 'w') as f:
+            json.dump(log_data, f, indent=2)
+        
+        print(f"Results saved to {log_file_path}")
+        
+        if success:
+            print(f"Successfully fixed {program_name}")
+        else:
+            print(f"Failed to fix {program_name}: {error}")
+        
+        return result
+
+
+def main():
+    """Main entry point for the script."""
+    parser = argparse.ArgumentParser(description='Fix buggy programs using Claude Code agent')
+    parser.add_argument('--model-name', type=str, default='claude-3-5-sonnet-20241022',
+                        help='Claude model name to use')
+    parser.add_argument('--buggy-program-folder', type=str, required=True,
+                        help='Absolute path to folder containing buggy programs')
+    parser.add_argument('--fixed-program-folder', type=str, required=True,
+                        help='Absolute path to folder where fixed programs should be saved')
+    parser.add_argument('--program-name', type=str, required=True,
+                        help='Name of the program to fix (without .py extension)')
+    
+    args = parser.parse_args()
+    
+    try:
+        result = solve_problem(
+            model_name=args.model_name,
+            buggy_program_folder=args.buggy_program_folder,
+            fixed_program_folder=args.fixed_program_folder,
+            program_name=args.program_name
+        )
+        
+        # Print summary
+        if result['success']:
+            print(f"\n✓ Successfully fixed {args.program_name}")
+        else:
+            print(f"\n✗ Failed to fix {args.program_name}")
+            if result.get('error'):
+                print(f"  Error: {result['error']}")
+                
+        # Print Claude result summary
+        if result.get('claude_result'):
+            cr = result['claude_result']
+            print(f"\nClaude Code Statistics:")
+            print(f"  Duration: {cr.get('duration_ms', 0) / 1000:.2f} seconds")
+            print(f"  Turns: {cr.get('num_turns', 0)}")
+            print(f"  Cost: ${cr.get('cost_usd', 0):.4f}")
+            
+    except Exception as e:
+        print(f"Error: {e}")
+        return 1
+    
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())

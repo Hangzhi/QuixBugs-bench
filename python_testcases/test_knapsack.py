@@ -1,15 +1,15 @@
 import pytest
 from load_testdata import load_json_testcases
 
-if pytest.use_correct:
-    from correct_python_programs.knapsack import knapsack
-else:
-    from python_programs.knapsack import knapsack
+from test_utils import import_program
+
+knapsack = import_program('knapsack')
 
 
 testdata = load_json_testcases(knapsack.__name__)
 
 
+@pytest.mark.timeout(10)
 @pytest.mark.parametrize("input_data,expected", testdata)
 def test_knapsack(input_data, expected):
     if not pytest.run_slow and input_data == [

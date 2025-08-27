@@ -1,12 +1,12 @@
 import pytest
 from node import Node
 
-if pytest.use_correct:
-    from correct_python_programs.reverse_linked_list import reverse_linked_list
-else:
-    from python_programs.reverse_linked_list import reverse_linked_list
+from test_utils import import_program
+
+reverse_linked_list = import_program('reverse_linked_list')
 
 
+@pytest.mark.timeout(10)
 def test1():
     """Case 1: 5-node list input
     Expected Output: 1 2 3 4 5
@@ -28,6 +28,7 @@ def test1():
     assert output == [1, 2, 3, 4, 5]
 
 
+@pytest.mark.timeout(10)
 def test2():
     """Case 2: 1-node list input
     Expected Output: 0
@@ -45,6 +46,7 @@ def test2():
     assert output == [0]
 
 
+@pytest.mark.timeout(10)
 def test3():
     """Case 3: None input
     Expected Output: None

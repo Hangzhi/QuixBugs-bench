@@ -1,11 +1,11 @@
 import pytest
 
-if pytest.use_correct:
-    from correct_python_programs.shortest_paths import shortest_paths
-else:
-    from python_programs.shortest_paths import shortest_paths
+from test_utils import import_program
+
+shortest_paths = import_program('shortest_paths')
 
 
+@pytest.mark.timeout(10)
 def test1():
     """Case 1: Graph with multiple paths
     Output: {'A': 0, 'C': 3, 'B': 1, 'E': 5, 'D': 10, 'F': 4}
@@ -27,6 +27,7 @@ def test1():
     assert result == expected
 
 
+@pytest.mark.timeout(10)
 def test2():
     """Case 2: Graph with one path
     Output: {'A': 0, 'C': 3, 'B': 1, 'E': 5, 'D': 6, 'F': 9}
@@ -45,6 +46,7 @@ def test2():
     assert result == expected
 
 
+@pytest.mark.timeout(10)
 def test3():
     """Case 3: Graph with cycle
     Output: {'A': 0, 'C': 3, 'B': 1, 'E': 5, 'D': 6, 'F': 9}
