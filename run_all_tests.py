@@ -243,10 +243,9 @@ def main():
         # Parse path - handle both / and . as separators
         folder_path = args.program_folder.replace('.', '/')
         
-        # If it contains path separators, create timestamped file in that folder
-        if '/' in folder_path:
-            timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S")
-            output_file = f"{folder_path}/test_results_{timestamp}.json"
+        # Always create timestamped file in the program folder
+        timestamp = datetime.now().strftime("%Y_%m_%d_%H%M%S")
+        output_file = f"{folder_path}/test_results_{timestamp}.json"
     
     results = {
         "metadata": {
