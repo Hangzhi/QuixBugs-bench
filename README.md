@@ -1,5 +1,46 @@
 # QuixBugs Benchmark [![CI Status](https://github.com/jkoppel/QuixBugs/actions/workflows/ci.yml/badge.svg)](https://github.com/jkoppel/QuixBugs/actions/workflows/ci.yml)
 
+## LLM Agent Benchmark
+
+This repository includes tools for benchmarking LLM agents (like Claude Code) on program repair tasks. The benchmark suite allows you to:
+
+- **Fix programs** using LLM agents with minimal one-line changes
+- **Run automated testing** on fixed programs
+- **Score results** based on test success and code change minimality
+- **Compare performance** across different models and approaches
+
+**Latest Results:** Claude Code achieved **82.5% success rate** (33/40 programs) with minimal one-line fixes that pass all tests.
+
+### Quick Start for LLM Benchmarking
+
+1. **Fix a single program:**
+   ```bash
+   python3 experiments_claude_code/problem_solver_claude_code.py \
+       --model-name claude-3-5-sonnet-latest \
+       --buggy-program-folder python_programs \
+       --fixed-program-folder experiments_claude_code/fixed_python_programs \
+       --program-name bitcount
+   ```
+
+2. **Fix all programs automatically:**
+   ```bash
+   python3 experiments_claude_code/orchestrator_claude_code.py
+   ```
+
+3. **Test fixed programs:**
+   ```bash
+   python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs
+   ```
+
+4. **Score results:**
+   ```bash
+   python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_*.json
+   ```
+
+See detailed usage instructions below.
+
+---
+
 The QuixBugs benchmark consists of 40 programs from the Quixey Challenge translated into both Python and Java. Each contains a one-line defect, along with passing (when possible) and failing testcases. Defects fall into one of 14 defect classes. Corrected Python programs are also supplied. Quixbugs is intended for investigating cross-language performance by _multi-lingual_ program repair tools. 
 
 For more details, see the ["QuixBugs: A Multi-Lingual Program Repair Benchmark Set Based on the Quixey Challenge"](quixbugs.pdf). Researchers at KTH have run 5 repair systems on the Java version of Quixbugs programs, see ["A Comprehensive Study of Automatic Program Repair on the QuixBugs Benchmark"](http://arxiv.org/pdf/1805.03454).
@@ -68,6 +109,111 @@ BUILD SUCCESSFUL in 4s
 ## Using pytest tests
 
 For the Python version, there are [pytest](https://pytest.org/) tests for each program in the `python_testcases` folder. To run them, install pytest using `pip` and then, from the root of the repository, call `pytest` to run tests for a single program or target the whole directory to run every test inside it.
+
+## LLM Agent Benchmarking Tools
+
+The following tools are available for benchmarking LLM agents on program repair:
+
+### 1. problem_solver_claude_code.py
+
+Fixes a single program using Claude Code agent.
+
+**Usage:**
+```bash
+python3 experiments_claude_code/problem_solver_claude_code.py \
+    --model-name claude-3-5-sonnet-latest \
+    --buggy-program-folder python_programs \
+    --fixed-program-folder experiments_claude_code/fixed_python_programs \
+    --program-name bitcount
+```
+
+**Parameters:**
+- `--model-name`: Claude model to use (default: claude-3-5-sonnet-latest)
+- `--buggy-program-folder`: Path to folder with buggy programs
+- `--fixed-program-folder`: Path to save fixed programs
+- `--program-name`: Program to fix (without .py extension)
+
+**Output:**
+- Fixed program saved to `fixed_program_folder/{program_name}.py`
+- Results logged to `fixed_program_folder/agent_log_claude.json`
+
+### 2. orchestrator_claude_code.py
+
+Runs the problem solver on all programs automatically with progress tracking.
+
+**Usage:**
+```bash
+python3 experiments_claude_code/orchestrator_claude_code.py
+```
+
+**Features:**
+- Processes all 40 QuixBugs programs
+- Resumable (saves progress to `orchestrator_progress.json`)
+- 120-second timeout per program
+- Shows progress with ✅/❌ indicators
+
+### 3. run_all_tests.py
+
+Runs pytest tests on programs and generates detailed results with diff analysis.
+
+**Usage:**
+```bash
+# Test fixed programs with timestamped results
+python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs
+
+# Test specific programs
+python3 run_all_tests.py --programs bitcount gcd --program-folder experiments_claude_code.fixed_python_programs
+
+# Test with custom output file
+python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs --output my_results.json
+```
+
+**Parameters:**
+- `--program-folder`: Folder containing programs to test
+- `--programs`: Specific programs to test (optional)
+- `--output`: Output file path (optional)
+- `--timeout`: Test timeout in seconds (default: 10)
+
+**Output:**
+- Test results with pass/fail counts
+- `diff_line_count`: Number of lines different from original buggy program
+- Timestamped files created automatically when using folder paths
+
+### 4. test_result_scorer.py
+
+Scores test results to identify fully fixed programs.
+
+**Usage:**
+```bash
+python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_2025_08_28_183241.json
+```
+
+**Scoring Criteria:**
+A program is considered "fully fixed with one line" if:
+- `return_code == 0` (tests passed)
+- `failed == 0` (no failing tests)
+- `diff_line_count == 1` (exactly one line changed)
+
+**Output:**
+- Adds `fully_fixed_with_one_line` field to each program
+- Adds `final_result` summary with counts and success rate
+- Saves to `{input_file}_scored.json`
+
+### Complete Workflow Example
+
+```bash
+# 1. Fix all programs
+python3 experiments_claude_code/orchestrator_claude_code.py
+
+# 2. Test the fixed programs
+python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs
+
+# 3. Score the results
+python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_*.json
+
+# 4. View the scored results
+cat experiments_claude_code/fixed_python_programs/test_results_*_scored.json
+```
 
 ```bash
 pip install pytest
