@@ -38,7 +38,8 @@ class ClaudeCodeAgent:
         return env
     
     def run_agent(self, instruction: str, working_dir: Path) -> Dict[str, Any]:
-        command = (f"timeout 60 claude --verbose --output-format stream-json "
+        # Use shlex.quote to properly escape the instruction
+        command = (f"timeout 120 claude --verbose --output-format stream-json "
                   f"-p {shlex.quote(instruction)} --allowedTools {' '.join(self.ALLOWED_TOOLS)}")
         
         start_time = time.time()
@@ -52,6 +53,9 @@ class ClaudeCodeAgent:
             
             stdout_lines = []
             
+            # Read stdout
+            for line in process.stdout:
+                stdout_lines.append(line)
             
             return_code = process.wait()
             stderr = process.stderr.read()
@@ -75,8 +79,8 @@ class ClaudeCodeAgent:
 
 def solve_problem(
     model_name: str,
-    buggy_program_folder: str,
-    fixed_program_folder: str,
+    buggy_python_program_folder: str,
+    fixed_python_program_folder: str,
     program_name: str
 ) -> Dict[str, Any]:
     """
@@ -84,16 +88,16 @@ def solve_problem(
     
     Args:
         model_name: The Claude model to use
-        buggy_program_folder: Absolute path to folder containing buggy programs
-        fixed_program_folder: Absolute path to folder where fixed programs should be saved
+        buggy_python_program_folder: Absolute path to folder containing buggy programs
+        fixed_python_program_folder: Absolute path to folder where fixed programs should be saved
         program_name: Name of the program to fix (without .py extension)
         
     Returns:
         A dictionary containing the results
     """
     # Convert paths to Path objects
-    buggy_folder = Path(buggy_program_folder).absolute()
-    fixed_folder = Path(fixed_program_folder).absolute()
+    buggy_folder = Path(buggy_python_program_folder).absolute()
+    fixed_folder = Path(fixed_python_program_folder).absolute()
     
     # Ensure folders exist
     if not buggy_folder.exists():
@@ -102,12 +106,12 @@ def solve_problem(
     fixed_folder.mkdir(parents=True, exist_ok=True)
     
     # Check if buggy program exists
-    buggy_program_path = buggy_folder / f"{program_name}.py"
-    if not buggy_program_path.exists():
-        raise ValueError(f"Buggy program not found: {buggy_program_path}")
+    buggy_python_program_path = buggy_folder / f"{program_name}.py"
+    if not buggy_python_program_path.exists():
+        raise ValueError(f"Buggy program not found: {buggy_python_program_path}")
     
     # Read the buggy program
-    with open(buggy_program_path, 'r') as f:
+    with open(buggy_python_program_path, 'r') as f:
         buggy_code = f.read()
     
     # Create a temporary working directory for the agent
@@ -116,13 +120,13 @@ def solve_problem(
         
         # Copy the buggy program to temp directory
         temp_buggy_path = temp_path / f"{program_name}.py"
-        shutil.copy2(buggy_program_path, temp_buggy_path)
+        shutil.copy2(buggy_python_program_path, temp_buggy_path)
         
         # Prepare the instruction for Claude - copying file to working dir for reading
         # Get relative paths from parent directory
         parent_dir = Path(buggy_folder).parent
         buggy_rel_path = f"python_programs/{program_name}.py"
-        fixed_rel_path = f"experiments_claude_code/fixed_programs/{program_name}.py"
+        fixed_rel_path = f"experiments_claude_code/fixed_python_programs/{program_name}.py"
         
         instruction = f"""Task:
 1. Read the buggy program from: {program_name}.py
@@ -131,10 +135,10 @@ def solve_problem(
 4. Write the complete fixed program to fixed_{program_name}.py
 
 Requirements:
-- The fix should be exactly one line change
-- Do not add comments or make other modifications
-- Ensure the fixed code is syntactically correct and complete
-- The program should maintain the same functionality but with the bug fixed"""
+1. The fix should be exactly one line change
+2. Do not add comments or make other modifications
+3. Ensure the fixed code is syntactically correct and complete
+4. The program should maintain the same functionality but with the bug fixed"""
         
         # Initialize and run the agent
         agent = ClaudeCodeAgent(model_name)
@@ -143,17 +147,17 @@ Requirements:
         claude_result = agent.run_agent(instruction, temp_path)
         
         # Check if the fixed program was created
-        fixed_program_path = fixed_folder / f"{program_name}.py"
+        fixed_python_program_path = fixed_folder / f"{program_name}.py"
         temp_fixed_path = temp_path / f"fixed_{program_name}.py"
         success = False
         error = None
         
         if temp_fixed_path.exists():
             # Copy the fixed program from temp to fixed folder
-            shutil.copy2(temp_fixed_path, fixed_program_path)
+            shutil.copy2(temp_fixed_path, fixed_python_program_path)
             success = True
         else:
-            error = f"Fixed file not created: {fixed_program_path}"
+            error = f"Fixed file not created: {fixed_python_program_path}"
             success = False
         
         # Prepare the result
@@ -205,7 +209,7 @@ Requirements:
 def main():
     """Main entry point for the script."""
     parser = argparse.ArgumentParser(description='Fix buggy programs using Claude Code agent')
-    parser.add_argument('--model-name', type=str, default='claude-3-5-sonnet-20241022',
+    parser.add_argument('--model-name', type=str, default='claude-3-7-sonnet-latest',
                         help='Claude model name to use')
     parser.add_argument('--buggy-program-folder', type=str, required=True,
                         help='Absolute path to folder containing buggy programs')
@@ -219,8 +223,8 @@ def main():
     try:
         result = solve_problem(
             model_name=args.model_name,
-            buggy_program_folder=args.buggy_program_folder,
-            fixed_program_folder=args.fixed_program_folder,
+            buggy_python_program_folder=args.buggy_python_program_folder,
+            fixed_python_program_folder=args.fixed_python_program_folder,
             program_name=args.program_name
         )
         
