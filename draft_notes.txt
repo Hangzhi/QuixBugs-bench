@@ -1,0 +1,47 @@
+python3 run_all_java_tests.py --program-folder correct_java_programs
+
+------------------------------------------------------------
+Test run complete! Results saved to correct_java_programs/test_results_2025_08_29_210313.json
+
+Summary:
+  ✓ Passed:   40/40
+  ✗ Failed:   0/40
+  ⚠ Errors:   0/40
+  ⏱ Timeouts:  0/40
+
+
+python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs
+
+Test run complete! Results saved to java_programs/test_results_2025_08_29_210709.json
+
+Summary:
+  ✓ Passed:   0/40
+  ✗ Failed:   36/40
+  ⚠ Errors:   0/40
+  ⏱ Timeouts:  4/40
+  ⊘ No Tests: 0/40
+
+python3 experiments_claude_code/problem_solver_claude_code.py \
+        --buggy-program-folder java_programs \
+        --fixed-program-folder experiments_claude_code/fixed_java_programs \
+        --program-name knapsack \
+        --language java
+
+generate a java_test_counts_required.json like python_test_counts_required.json from the file /home/ubuntu/QuixBugs-bench/correct_java_programs/test_results_2025_08_29_210313.json
+
+add a lanuaguage option to orchestrator_claude_code.py the language option can be either python or java. store the progress in the prchestrator_{language}_progress for test_counts_required.json, it's either java_test_counts_required.json or python_test_counts_required.json
+
+
+experiments_claude_code/fixed_java_programs
+
+debug on how to let the fixed program pass 
+
+python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs --programs BITCOUNT
+
+how to tun gradle test --tests java_testcases.junit.BITCOUNT_TEST against the experiments_claude_code/fixed_java_programs/BITCOUNT.java
+
+ python3 run_all_java_tests.py \
+      --program-folder experiments_claude_code/fixed_java_programs \
+      --programs BITCOUNT KNAPSACK GCD
+
+python3 experiments_claude_code/orchestrator_claude_code.py --language python

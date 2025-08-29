@@ -1,4 +1,3 @@
-# package fixed_java_programs
 def depth_first_search(startnode, goalnode):
     nodesvisited = set()
 

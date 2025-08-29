@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-29T21:47:34.149241",
+    "program_folder": "experiments_claude_code/fixed_java_programs",
+    "timeout": 10,
+    "total_programs": 6
+  },
+  "results": [
+    {
+      "program": "BITCOUNT",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.BITCOUNT_TEST --rerun-tasks",
+      "diff_line_count": 2,
+      "gradle_task": "test"
+    },
+    {
+      "program": "BREADTH_FIRST_SEARCH",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.BREADTH_FIRST_SEARCH_TEST --rerun-tasks",
+      "diff_line_count": 5,
+      "gradle_task": "test"
+    },
+    {
+      "program": "BUCKETSORT",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.BUCKETSORT_TEST --rerun-tasks",
+      "diff_line_count": 2,
+      "gradle_task": "test"
+    },
+    {
+      "program": "DEPTH_FIRST_SEARCH",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.DEPTH_FIRST_SEARCH_TEST --rerun-tasks",
+      "diff_line_count": 3,
+      "gradle_task": "test"
+    },
+    {
+      "program": "DETECT_CYCLE",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.DETECT_CYCLE_TEST --rerun-tasks",
+      "diff_line_count": 3,
+      "gradle_task": "test"
+    },
+    {
+      "program": "KNAPSACK",
+      "status": "FAILED",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 5,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.KNAPSACK_TEST --rerun-tasks",
+      "diff_line_count": 1,
+      "gradle_task": "test"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 6,
+    "errors": 0,
+    "timeouts": 0,
+    "no_tests": 0,
+    "total": 6
+  }
+}

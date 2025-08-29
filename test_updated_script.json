@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-29T22:17:54.718330",
+    "program_folder": "experiments_claude_code/fixed_java_programs",
+    "timeout": 10,
+    "total_programs": 1
+  },
+  "results": [
+    {
+      "program": "BITCOUNT",
+      "status": "PASSED",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "gradle test --tests java_testcases.junit.BITCOUNT_TEST --rerun-tasks",
+      "diff_line_count": 1,
+      "gradle_task": "test"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "no_tests": 0,
+    "total": 1
+  }
+}

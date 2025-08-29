@@ -23,24 +23,9 @@
     "mergesort",
     "minimum_spanning_tree",
     "next_palindrome",
-    "next_permutation",
-    "pascal",
-    "possible_change",
-    "powerset",
-    "quicksort",
-    "reverse_linked_list",
-    "rpn_eval",
-    "shortest_path_length",
-    "shortest_path_lengths",
-    "shortest_paths",
-    "shunting_yard",
-    "sieve",
-    "sqrt",
-    "subsequences",
-    "to_base",
-    "topological_ordering",
-    "wrap"
+    "next_permutation"
   ],
   "failed": [],
-  "timestamp": "2025-08-28T15:37:53.611315"
+  "language": "java",
+  "timestamp": "2025-08-29T22:54:13.538306"
 }

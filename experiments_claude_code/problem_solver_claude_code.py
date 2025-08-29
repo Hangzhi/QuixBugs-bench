@@ -28,7 +28,7 @@ class ClaudeCodeAgent:
         if self.model_name:
             env["ANTHROPIC_MODEL"] = self.model_name.removeprefix("anthropic/")
         elif "ANTHROPIC_MODEL" not in env:
-            env["ANTHROPIC_MODEL"] = "claude-3-5-sonnet-20241022"
+            env["ANTHROPIC_MODEL"] = "claude-3-7-sonnet-20250219"
         
         env.update(
             {"FORCE_AUTO_BACKGROUND_TASKS": "1", 
@@ -81,7 +81,8 @@ def solve_problem(
     model_name: str,
     buggy_python_program_folder: str,
     fixed_python_program_folder: str,
-    program_name: str
+    program_name: str,
+    language: str = "python"
 ) -> Dict[str, Any]:
     """
     Solve a single buggy program using Claude Code.
@@ -90,7 +91,8 @@ def solve_problem(
         model_name: The Claude model to use
         buggy_python_program_folder: Absolute path to folder containing buggy programs
         fixed_python_program_folder: Absolute path to folder where fixed programs should be saved
-        program_name: Name of the program to fix (without .py extension)
+        program_name: Name of the program to fix (without extension)
+        language: Programming language ("python" or "java")
         
     Returns:
         A dictionary containing the results
@@ -105,34 +107,49 @@ def solve_problem(
     
     fixed_folder.mkdir(parents=True, exist_ok=True)
     
+    # Determine file extension based on language
+    if language.lower() == "java":
+        extension = ".java"
+        # Convert program name to uppercase for Java
+        program_name = program_name.upper()
+    else:
+        extension = ".py"
+        # Keep lowercase for Python
+        program_name = program_name.lower()
+    
     # Check if buggy program exists
-    buggy_python_program_path = buggy_folder / f"{program_name}.py"
+    buggy_python_program_path = buggy_folder / f"{program_name}{extension}"
     if not buggy_python_program_path.exists():
         raise ValueError(f"Buggy program not found: {buggy_python_program_path}")
-    
-    # Read the buggy program
-    with open(buggy_python_program_path, 'r') as f:
-        buggy_code = f.read()
     
     # Create a temporary working directory for the agent
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
         
         # Copy the buggy program to temp directory
-        temp_buggy_path = temp_path / f"{program_name}.py"
+        temp_buggy_path = temp_path / f"{program_name}{extension}"
         shutil.copy2(buggy_python_program_path, temp_buggy_path)
         
-        # Prepare the instruction for Claude - copying file to working dir for reading
-        # Get relative paths from parent directory
-        parent_dir = Path(buggy_folder).parent
-        buggy_rel_path = f"python_programs/{program_name}.py"
-        fixed_rel_path = f"experiments_claude_code/fixed_python_programs/{program_name}.py"
-        
-        instruction = f"""Task:
+        # Prepare the instruction for Claude based on language
+        if language.lower() == "java":
+            instruction = f"""Task:
+1. Read the buggy program from: {program_name}.java
+2. Analyze the code to identify the ONE line that contains a bug
+3. Fix ONLY that buggy line with a minimal change
+4. Write the complete fixed program to fixed_{program_name}.java
+
+Requirements:
+1. The fix should be exactly one line change
+2. Do not add comments or make other modifications
+3. Ensure the fixed code is syntactically correct and complete
+4. The program should maintain the same functionality but with the bug fixed"""
+        else:
+            instruction = f"""Task:
 1. Read the buggy program from: {program_name}.py
 2. Analyze the code to identify the ONE line that contains a bug
 3. Fix ONLY that buggy line with a minimal change
 4. Write the complete fixed program to fixed_{program_name}.py
+5. The package should be package fixed_java_programs rather than java_programs 
 
 Requirements:
 1. The fix should be exactly one line change
@@ -147,8 +164,8 @@ Requirements:
         claude_result = agent.run_agent(instruction, temp_path)
         
         # Check if the fixed program was created
-        fixed_python_program_path = fixed_folder / f"{program_name}.py"
-        temp_fixed_path = temp_path / f"fixed_{program_name}.py"
+        fixed_python_program_path = fixed_folder / f"{program_name}{extension}"
+        temp_fixed_path = temp_path / f"fixed_{program_name}{extension}"
         success = False
         error = None
         
@@ -163,6 +180,7 @@ Requirements:
         # Prepare the result
         result = {
             "program": program_name,
+            "language": language,
             "success": success,
             "error": error,
             "claude_result": claude_result,
@@ -216,16 +234,19 @@ def main():
     parser.add_argument('--fixed-program-folder', type=str, required=True,
                         help='Absolute path to folder where fixed programs should be saved')
     parser.add_argument('--program-name', type=str, required=True,
-                        help='Name of the program to fix (without .py extension)')
+                        help='Name of the program to fix (without extension)')
+    parser.add_argument('--language', type=str, default='python', choices=['python', 'java'],
+                        help='Programming language of the program to fix (default: python)')
     
     args = parser.parse_args()
     
     try:
         result = solve_problem(
             model_name=args.model_name,
-            buggy_python_program_folder=args.buggy_python_program_folder,
-            fixed_python_program_folder=args.fixed_python_program_folder,
-            program_name=args.program_name
+            buggy_python_program_folder=args.buggy_program_folder,
+            fixed_python_program_folder=args.fixed_program_folder,
+            program_name=args.program_name,
+            language=args.language
         )
         
         # Print summary
@@ -241,8 +262,7 @@ def main():
             cr = result['claude_result']
             print(f"\nClaude Code Statistics:")
             print(f"  Duration: {cr.get('duration_ms', 0) / 1000:.2f} seconds")
-            print(f"  Turns: {cr.get('num_turns', 0)}")
-            print(f"  Cost: ${cr.get('cost_usd', 0):.4f}")
+            
             
     except Exception as e:
         print(f"Error: {e}")

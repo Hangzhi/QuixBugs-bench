@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-29T20:53:19.187103",
+    "program_folder": "correct_java_programs",
+    "timeout": 10,
+    "total_programs": 3
+  },
+  "results": [
+    {
+      "program": "KNAPSACK",
+      "status": "PASSED",
+      "passed": 10,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "gradle crtTest --tests java_testcases.junit.crt_program.KNAPSACK_TEST --rerun-tasks",
+      "diff_line_count": 0,
+      "gradle_task": "crtTest"
+    },
+    {
+      "program": "GCD",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "gradle crtTest --tests java_testcases.junit.crt_program.GCD_TEST --rerun-tasks",
+      "diff_line_count": 0,
+      "gradle_task": "crtTest"
+    },
+    {
+      "program": "BITCOUNT",
+      "status": "PASSED",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "gradle crtTest --tests java_testcases.junit.crt_program.BITCOUNT_TEST --rerun-tasks",
+      "diff_line_count": 0,
+      "gradle_task": "crtTest"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "no_tests": 0,
+    "total": 3
+  }
+}
