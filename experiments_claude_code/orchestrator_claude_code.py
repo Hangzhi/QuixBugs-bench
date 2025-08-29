@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import json, subprocess, sys, argparse
 from pathlib import Path
 from datetime import datetime
