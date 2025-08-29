@@ -1,4 +1,4 @@
-package java_programs;
+package fixed_java_programs;
 import java.util.*;
 
 /*
@@ -19,7 +19,7 @@ public class BUCKETSORT {
 
         ArrayList<Integer> sorted_arr = new ArrayList<Integer>(100);
         int i = 0;
-        for (Integer count : counts) { // Fixed line: changed arr to counts
+        for (Integer count : counts) { // fixed: changed arr to counts
             sorted_arr.addAll(Collections.nCopies(count, i));
             i++;
         }

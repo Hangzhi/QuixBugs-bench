@@ -137,6 +137,7 @@ def solve_problem(
 2. Analyze the code to identify the ONE line that contains a bug
 3. Fix ONLY that buggy line with a minimal change
 4. Write the complete fixed program to fixed_{program_name}.java
+5. The package should be package fixed_java_programs rather than java_programs 
 
 Requirements:
 1. The fix should be exactly one line change
@@ -149,7 +150,6 @@ Requirements:
 2. Analyze the code to identify the ONE line that contains a bug
 3. Fix ONLY that buggy line with a minimal change
 4. Write the complete fixed program to fixed_{program_name}.py
-5. The package should be package fixed_java_programs rather than java_programs 
 
 Requirements:
 1. The fix should be exactly one line change

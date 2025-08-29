@@ -45,3 +45,7 @@ how to tun gradle test --tests java_testcases.junit.BITCOUNT_TEST against the ex
       --programs BITCOUNT KNAPSACK GCD
 
 python3 experiments_claude_code/orchestrator_claude_code.py --language python
+
+how to do test experiments_claude_code/fixed_java_programs/BITCOUNT.java in pure shell even the gradle setup step 
+
+generate 3 python sol

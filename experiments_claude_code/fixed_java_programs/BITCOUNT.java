@@ -1,4 +1,5 @@
-package java_programs;
+package fixed_java_programs;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.

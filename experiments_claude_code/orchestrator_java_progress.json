@@ -7,25 +7,9 @@
     "detect_cycle",
     "find_first_in_sorted",
     "find_in_sorted",
-    "flatten",
-    "gcd",
-    "get_factors",
-    "hanoi",
-    "is_valid_parenthesization",
-    "kheapsort",
-    "knapsack",
-    "kth",
-    "lcs_length",
-    "levenshtein",
-    "lis",
-    "longest_common_subsequence",
-    "max_sublist_sum",
-    "mergesort",
-    "minimum_spanning_tree",
-    "next_palindrome",
-    "next_permutation"
+    "flatten"
   ],
   "failed": [],
   "language": "java",
-  "timestamp": "2025-08-29T22:54:13.538306"
+  "timestamp": "2025-08-29T23:11:19.063902"
 }

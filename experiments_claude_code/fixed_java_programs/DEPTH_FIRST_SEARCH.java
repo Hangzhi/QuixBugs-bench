@@ -1,4 +1,4 @@
-package java_programs;
+package fixed_java_programs;
 import java.util.*;
 /*
  * To change this template, choose Tools | Templates

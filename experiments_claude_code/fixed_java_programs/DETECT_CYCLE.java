@@ -1,4 +1,4 @@
-package java_programs;
+package fixed_java_programs;
 import java.util.*;
 /*
  * To change this template, choose Tools | Templates
@@ -15,14 +15,11 @@ public class DETECT_CYCLE {
         Node tortoise = node;
 
         while (true) {
-            if (hare.getSuccessor() == null)
+            if (hare.getSuccessor() == null || hare.getSuccessor().getSuccessor() == null)
                 return false;
 
             tortoise = tortoise.getSuccessor();
-            hare = hare.getSuccessor();
-            if (hare == null || hare.getSuccessor() == null)
-                return false;
-            hare = hare.getSuccessor();
+            hare = hare.getSuccessor().getSuccessor();
 
             if (hare == tortoise)
                 return true;
