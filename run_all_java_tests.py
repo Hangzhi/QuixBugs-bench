@@ -60,10 +60,10 @@ PROGRAMS = [
 ]
 
 def calculate_diff_lines(program_name, program_folder):
-    """Calculate number of different lines between tested program and correct version."""
+    """Calculate number of different lines between tested program and buggy version."""
     try:
-        # Path to correct version
-        original_program_path = f"/home/ubuntu/QuixBugs-bench/correct_java_programs/{program_name}.java"
+        # Compare against buggy version (not correct version) for fixed programs
+        original_program_path = f"/home/ubuntu/QuixBugs-bench/java_programs/{program_name}.java"
         
         # Path to tested version
         if program_folder:
@@ -84,14 +84,26 @@ def calculate_diff_lines(program_name, program_folder):
         with open(tested_path, 'r') as f:
             tested_lines = [line.rstrip() for line in f.readlines()]
         
-        # Use SequenceMatcher to find actual changes
-        original_non_empty = [(i, line) for i, line in enumerate(original_lines) if line.strip()]
-        tested_non_empty = [(i, line) for i, line in enumerate(tested_lines) if line.strip()]
+        # Filter out package declarations and empty lines for comparison
+        def filter_lines(lines):
+            filtered = []
+            for line in lines:
+                stripped = line.strip()
+                # Skip empty lines
+                if not stripped:
+                    continue
+                # Skip package declarations (handles different package names)
+                if stripped.startswith('package ') and stripped.endswith(';'):
+                    continue
+                filtered.append(line)
+            return filtered
         
-        # Count lines that actually differ in content
-        matcher = difflib.SequenceMatcher(None, 
-                                         [line for _, line in original_non_empty],
-                                         [line for _, line in tested_non_empty])
+        # Filter both sets of lines
+        original_filtered = filter_lines(original_lines)
+        tested_filtered = filter_lines(tested_lines)
+        
+        # Use SequenceMatcher to find actual changes
+        matcher = difflib.SequenceMatcher(None, original_filtered, tested_filtered)
         
         changed_blocks = 0
         for tag, i1, i2, j1, j2 in matcher.get_opcodes():
