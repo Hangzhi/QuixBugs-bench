@@ -1,0 +1,419 @@
+{
+  "metadata": {
+    "timestamp": "2025-08-30T23:13:45.096246",
+    "correct_version": false,
+    "run_slow": false,
+    "program_folder": "experiments_claude_code.fixed_python_programs_run3",
+    "timeout": 10,
+    "total_programs": 40
+  },
+  "results": [
+    {
+      "program": "bitcount",
+      "status": "PASSED",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_bitcount.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "breadth_first_search",
+      "status": "FAILED",
+      "passed": 4,
+      "skipped": 0,
+      "failed": 1,
+      "return_code": 1,
+      "command": "pytest python_testcases/test_breadth_first_search.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "bucketsort",
+      "status": "PASSED",
+      "passed": 7,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_bucketsort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "depth_first_search",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_depth_first_search.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "detect_cycle",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_detect_cycle.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "find_first_in_sorted",
+      "status": "TIMEOUT",
+      "passed": 0,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": -1,
+      "command": "pytest python_testcases/test_find_first_in_sorted.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "find_in_sorted",
+      "status": "FAILED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 2,
+      "return_code": 1,
+      "command": "pytest python_testcases/test_find_in_sorted.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "flatten",
+      "status": "PASSED",
+      "passed": 7,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_flatten.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "gcd",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_gcd.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "get_factors",
+      "status": "PASSED",
+      "passed": 11,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_get_factors.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "hanoi",
+      "status": "PASSED",
+      "passed": 8,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_hanoi.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "is_valid_parenthesization",
+      "status": "PASSED",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_is_valid_parenthesization.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "kheapsort",
+      "status": "PASSED",
+      "passed": 4,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_kheapsort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "knapsack",
+      "status": "PASSED",
+      "passed": 9,
+      "skipped": 1,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_knapsack.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "kth",
+      "status": "PASSED",
+      "passed": 7,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_kth.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "lcs_length",
+      "status": "PASSED",
+      "passed": 9,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_lcs_length.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "levenshtein",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 1,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_levenshtein.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "lis",
+      "status": "FAILED",
+      "passed": 8,
+      "skipped": 0,
+      "failed": 4,
+      "return_code": 1,
+      "command": "pytest python_testcases/test_lis.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "longest_common_subsequence",
+      "status": "PASSED",
+      "passed": 10,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_longest_common_subsequence.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "max_sublist_sum",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_max_sublist_sum.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "mergesort",
+      "status": "PASSED",
+      "passed": 14,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_mergesort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "minimum_spanning_tree",
+      "status": "PASSED",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_minimum_spanning_tree.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "next_palindrome",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_next_palindrome.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "next_permutation",
+      "status": "PASSED",
+      "passed": 8,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_next_permutation.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "pascal",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_pascal.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "possible_change",
+      "status": "PASSED",
+      "passed": 10,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_possible_change.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 2
+    },
+    {
+      "program": "powerset",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_powerset.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "quicksort",
+      "status": "FAILED",
+      "passed": 12,
+      "skipped": 0,
+      "failed": 1,
+      "return_code": 1,
+      "command": "pytest python_testcases/test_quicksort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 14
+    },
+    {
+      "program": "reverse_linked_list",
+      "status": "PASSED",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_reverse_linked_list.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "rpn_eval",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_rpn_eval.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "shortest_path_length",
+      "status": "PASSED",
+      "passed": 4,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_shortest_path_length.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "shortest_path_lengths",
+      "status": "PASSED",
+      "passed": 4,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_shortest_path_lengths.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "shortest_paths",
+      "status": "PASSED",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_shortest_paths.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "shunting_yard",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_shunting_yard.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "sieve",
+      "status": "PASSED",
+      "passed": 6,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_sieve.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "sqrt",
+      "status": "PASSED",
+      "passed": 7,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_sqrt.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "subsequences",
+      "status": "PASSED",
+      "passed": 12,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_subsequences.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "to_base",
+      "status": "PASSED",
+      "passed": 10,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_to_base.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "topological_ordering",
+      "status": "PASSED",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_topological_ordering.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    },
+    {
+      "program": "wrap",
+      "status": "PASSED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 0,
+      "command": "pytest python_testcases/test_wrap.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run3",
+      "diff_line_count": 1
+    }
+  ],
+  "summary": {
+    "passed": 35,
+    "failed": 4,
+    "errors": 0,
+    "timeouts": 1,
+    "total": 40
+  }
+}
