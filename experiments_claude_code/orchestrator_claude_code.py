@@ -2,7 +2,7 @@ import json, subprocess, sys, argparse
 from pathlib import Path
 from datetime import datetime
 
-BASE_DIR = Path("/home/chenglei/QuixBugs-bench")
+BASE_DIR = Path("/home/ubuntu/QuixBugs-bench")
 EXPERIMENTS_DIR = BASE_DIR / "experiments_claude_code"
 
 def get_language_config(language, run_name):
@@ -47,18 +47,13 @@ def run_solver(program, language, config):
         "--program-name", program,
         "--language", language
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
-    if result.returncode != 0:
-        print(f"❌ Error running solver for {program}:")
-        print("STDOUT:")
-        print(result.stdout)
-        print("STDERR:")
-        print(result.stderr)
-    return result.returncode == 0
-    # except KeyboardInterrupt:
-    #     raise  # Re-raise to propagate ctrl+c
-    # except:
-    #     return False
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+        return result.returncode == 0
+    except KeyboardInterrupt:
+        raise # Re-raise to propagate ctrl+c
+    except:
+        return False
 
 def main():
     parser = argparse.ArgumentParser(description='Orchestrate fixing of buggy programs')
