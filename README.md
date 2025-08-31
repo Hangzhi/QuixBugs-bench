@@ -12,9 +12,9 @@ This repository includes tools for benchmarking LLM agents (like Claude Code) on
 - **Compare performance** across different models and approaches
 
 **Latest Results:** 
-- **Python:** Claude Code achieved **85.0% success rate** (34/40 programs) with minimal one-line fixes
+- **Python:** Claude Code achieved **86.5 ± 2% success rate** with minimal one-line fixes
   - [Agent Log](experiments_claude_code/fixed_python_programs/agent_log_claude.json)
-  - [Test Results (Scored)](experiments_claude_code/fixed_python_programs/test_results_2025_08_30_081207_scored.json)
+  - [Run1 - Run5](experiments_claude_code/fixed_python_programs/)
 - **Java:** Claude Code achieved **75.0% success rate** (30/40 programs) with minimal one-line fixes
   - [Agent Log](experiments_claude_code/fixed_java_programs/agent_log_claude.json)
   - [Test Results (Scored)](experiments_claude_code/fixed_java_programs/test_results_2025_08_30_075919_scored.json)
