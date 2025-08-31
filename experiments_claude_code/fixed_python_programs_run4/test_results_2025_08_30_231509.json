@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2025-08-30T22:47:38.301355",
+    "timestamp": "2025-08-30T23:15:09.051052",
     "correct_version": false,
     "run_slow": false,
     "program_folder": "experiments_claude_code.fixed_python_programs_run4",
@@ -16,7 +16,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_bitcount.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "breadth_first_search",
@@ -26,7 +26,7 @@
       "failed": 1,
       "return_code": 1,
       "command": "pytest python_testcases/test_breadth_first_search.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "bucketsort",
@@ -36,7 +36,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_bucketsort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "depth_first_search",
@@ -46,7 +46,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_depth_first_search.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "detect_cycle",
@@ -56,7 +56,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_detect_cycle.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "find_first_in_sorted",
@@ -66,7 +66,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_find_first_in_sorted.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "find_in_sorted",
@@ -76,7 +76,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_find_in_sorted.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "flatten",
@@ -86,7 +86,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_flatten.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "gcd",
@@ -106,7 +106,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_get_factors.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "hanoi",
@@ -116,7 +116,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_hanoi.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "is_valid_parenthesization",
@@ -126,7 +126,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_is_valid_parenthesization.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "kheapsort",
@@ -136,7 +136,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_kheapsort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "knapsack",
@@ -146,7 +146,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_knapsack.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "kth",
@@ -156,7 +156,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_kth.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "lcs_length",
@@ -166,7 +166,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_lcs_length.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "levenshtein",
@@ -176,7 +176,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_levenshtein.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "lis",
@@ -186,7 +186,7 @@
       "failed": 4,
       "return_code": 1,
       "command": "pytest python_testcases/test_lis.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "longest_common_subsequence",
@@ -196,7 +196,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_longest_common_subsequence.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "max_sublist_sum",
@@ -206,7 +206,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_max_sublist_sum.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "mergesort",
@@ -216,7 +216,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_mergesort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "minimum_spanning_tree",
@@ -226,7 +226,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_minimum_spanning_tree.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "next_palindrome",
@@ -236,7 +236,7 @@
       "failed": 1,
       "return_code": 1,
       "command": "pytest python_testcases/test_next_palindrome.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "next_permutation",
@@ -246,7 +246,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_next_permutation.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "pascal",
@@ -256,7 +256,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_pascal.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "possible_change",
@@ -266,7 +266,7 @@
       "failed": 9,
       "return_code": 1,
       "command": "pytest python_testcases/test_possible_change.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "powerset",
@@ -276,7 +276,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_powerset.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "quicksort",
@@ -286,7 +286,7 @@
       "failed": 1,
       "return_code": 1,
       "command": "pytest python_testcases/test_quicksort.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 14
     },
     {
       "program": "reverse_linked_list",
@@ -296,7 +296,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_reverse_linked_list.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "rpn_eval",
@@ -306,7 +306,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_rpn_eval.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "shortest_path_length",
@@ -316,7 +316,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_shortest_path_length.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "shortest_path_lengths",
@@ -326,7 +326,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_shortest_path_lengths.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "shortest_paths",
@@ -336,7 +336,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_shortest_paths.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "shunting_yard",
@@ -346,7 +346,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_shunting_yard.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "sieve",
@@ -356,7 +356,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_sieve.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "sqrt",
@@ -366,7 +366,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_sqrt.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "subsequences",
@@ -376,7 +376,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_subsequences.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "to_base",
@@ -386,7 +386,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_to_base.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "topological_ordering",
@@ -396,7 +396,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_topological_ordering.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     },
     {
       "program": "wrap",
@@ -406,7 +406,7 @@
       "failed": 0,
       "return_code": 0,
       "command": "pytest python_testcases/test_wrap.py -v --tb=short --timeout=10 --program-folder experiments_claude_code.fixed_python_programs_run4",
-      "diff_line_count": -1
+      "diff_line_count": 1
     }
   ],
   "summary": {
