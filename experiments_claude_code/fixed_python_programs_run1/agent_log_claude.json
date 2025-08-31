@@ -1,0 +1,564 @@
+{
+  "results": [
+    {
+      "program": "bitcount",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/bitcount.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 3,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: bitcount.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_bitcount.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.111860"
+    },
+    {
+      "program": "breadth_first_search",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/breadth_first_search.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: breadth_first_search.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_breadth_first_search.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.194828"
+    },
+    {
+      "program": "bucketsort",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/bucketsort.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: bucketsort.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_bucketsort.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.255993"
+    },
+    {
+      "program": "depth_first_search",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/depth_first_search.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: depth_first_search.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_depth_first_search.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.334873"
+    },
+    {
+      "program": "detect_cycle",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/detect_cycle.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: detect_cycle.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_detect_cycle.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.393878"
+    },
+    {
+      "program": "find_first_in_sorted",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/find_first_in_sorted.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: find_first_in_sorted.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_find_first_in_sorted.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.456469"
+    },
+    {
+      "program": "find_in_sorted",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/find_in_sorted.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: find_in_sorted.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_find_in_sorted.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.517206"
+    },
+    {
+      "program": "flatten",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/flatten.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: flatten.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_flatten.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.629167"
+    },
+    {
+      "program": "gcd",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/gcd.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: gcd.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_gcd.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.689246"
+    },
+    {
+      "program": "get_factors",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/get_factors.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: get_factors.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_get_factors.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.748431"
+    },
+    {
+      "program": "hanoi",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/hanoi.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: hanoi.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_hanoi.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.806756"
+    },
+    {
+      "program": "is_valid_parenthesization",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/is_valid_parenthesization.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: is_valid_parenthesization.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_is_valid_parenthesization.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.865843"
+    },
+    {
+      "program": "kheapsort",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/kheapsort.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: kheapsort.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_kheapsort.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.924590"
+    },
+    {
+      "program": "knapsack",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/knapsack.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: knapsack.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_knapsack.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:55.995663"
+    },
+    {
+      "program": "kth",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/kth.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: kth.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_kth.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.055620"
+    },
+    {
+      "program": "lcs_length",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/lcs_length.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: lcs_length.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_lcs_length.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.115585"
+    },
+    {
+      "program": "levenshtein",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/levenshtein.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: levenshtein.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_levenshtein.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.174731"
+    },
+    {
+      "program": "lis",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/lis.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: lis.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_lis.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.250249"
+    },
+    {
+      "program": "longest_common_subsequence",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/longest_common_subsequence.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: longest_common_subsequence.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_longest_common_subsequence.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.312258"
+    },
+    {
+      "program": "max_sublist_sum",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/max_sublist_sum.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: max_sublist_sum.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_max_sublist_sum.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.388952"
+    },
+    {
+      "program": "mergesort",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/mergesort.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: mergesort.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_mergesort.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.449043"
+    },
+    {
+      "program": "minimum_spanning_tree",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/minimum_spanning_tree.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: minimum_spanning_tree.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_minimum_spanning_tree.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.508460"
+    },
+    {
+      "program": "next_palindrome",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/next_palindrome.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: next_palindrome.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_next_palindrome.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.567849"
+    },
+    {
+      "program": "next_permutation",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/next_permutation.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: next_permutation.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_next_permutation.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.627262"
+    },
+    {
+      "program": "pascal",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/pascal.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: pascal.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_pascal.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.689224"
+    },
+    {
+      "program": "possible_change",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/possible_change.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: possible_change.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_possible_change.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.748109"
+    },
+    {
+      "program": "powerset",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/powerset.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: powerset.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_powerset.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.807180"
+    },
+    {
+      "program": "quicksort",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/quicksort.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: quicksort.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_quicksort.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.867845"
+    },
+    {
+      "program": "reverse_linked_list",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/reverse_linked_list.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: reverse_linked_list.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_reverse_linked_list.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.927528"
+    },
+    {
+      "program": "rpn_eval",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/rpn_eval.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: rpn_eval.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_rpn_eval.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:56.988563"
+    },
+    {
+      "program": "shortest_path_length",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/shortest_path_length.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: shortest_path_length.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_shortest_path_length.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.051845"
+    },
+    {
+      "program": "shortest_path_lengths",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/shortest_path_lengths.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: shortest_path_lengths.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_shortest_path_lengths.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.121629"
+    },
+    {
+      "program": "shortest_paths",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/shortest_paths.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: shortest_paths.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_shortest_paths.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.180276"
+    },
+    {
+      "program": "shunting_yard",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/shunting_yard.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: shunting_yard.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_shunting_yard.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.259925"
+    },
+    {
+      "program": "sieve",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/sieve.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: sieve.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_sieve.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.321451"
+    },
+    {
+      "program": "sqrt",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/sqrt.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: sqrt.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_sqrt.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.380717"
+    },
+    {
+      "program": "subsequences",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/subsequences.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: subsequences.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_subsequences.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.448578"
+    },
+    {
+      "program": "to_base",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/to_base.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: to_base.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_to_base.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.531400"
+    },
+    {
+      "program": "topological_ordering",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/topological_ordering.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: topological_ordering.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_topological_ordering.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.603827"
+    },
+    {
+      "program": "wrap",
+      "language": "python",
+      "success": false,
+      "error": "Fixed file not created: /home/chenglei/QuixBugs-bench/experiments_claude_code/fixed_python_programs_run1/wrap.py",
+      "claude_result": {
+        "success": false,
+        "agent_output": "",
+        "duration_ms": 1,
+        "error": "Process exited with code 127. Stderr: timeout: failed to run command \u2018claude\u2019: No such file or directory\n",
+        "command": "timeout 120 claude --verbose --output-format stream-json -p 'Task:\n1. Read the buggy program from: wrap.py\n2. Analyze the code to identify the ONE line that contains a bug\n3. Fix ONLY that buggy line with a minimal change\n4. Write the complete fixed program to fixed_wrap.py\n\nRequirements:\n1. The fix should be exactly one line change\n2. Do not add comments or make other modifications\n3. Ensure the fixed code is syntactically correct and complete\n4. The program should maintain the same functionality but with the bug fixed' --allowedTools Bash Edit Write Read Glob Grep LS WebFetch NotebookEdit TodoRead TodoWrite Agent"
+      },
+      "timestamp": "2025-08-31T00:05:57.665583"
+    }
+  ]
+}

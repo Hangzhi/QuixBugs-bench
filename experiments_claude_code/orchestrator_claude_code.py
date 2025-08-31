@@ -2,25 +2,25 @@ import json, subprocess, sys, argparse
 from pathlib import Path
 from datetime import datetime
 
-BASE_DIR = Path("/home/ubuntu/QuixBugs-bench")
+BASE_DIR = Path("/home/chenglei/QuixBugs-bench")
 EXPERIMENTS_DIR = BASE_DIR / "experiments_claude_code"
 
-def get_language_config(language):
+def get_language_config(language, run_name):
     """Get configuration for the specified language."""
     if language == "python":
         return {
-            "progress_file": EXPERIMENTS_DIR / "orchestrator_python_progress.json",
+            "progress_file": EXPERIMENTS_DIR / f"orchestrator_python_progress_{run_name}.json",
             "test_counts_file": BASE_DIR / "experiments_claude_code" / "python_test_counts_required.json",
             "buggy_folder": BASE_DIR / "python_programs",
-            "fixed_folder": EXPERIMENTS_DIR / "fixed_python_programs",
+            "fixed_folder": EXPERIMENTS_DIR / f"fixed_python_programs_{run_name}",
             "extension": ".py"
         }
     elif language == "java":
         return {
-            "progress_file": EXPERIMENTS_DIR / "orchestrator_java_progress.json",
+            "progress_file": EXPERIMENTS_DIR / f"orchestrator_java_progress_{run_name}.json",
             "test_counts_file": EXPERIMENTS_DIR / "java_test_counts_required.json",
             "buggy_folder": BASE_DIR / "java_programs",
-            "fixed_folder": EXPERIMENTS_DIR / "fixed_java_programs",
+            "fixed_folder": EXPERIMENTS_DIR / f"fixed_java_programs_{run_name}",
             "extension": ".java"
         }
     else:
@@ -47,22 +47,30 @@ def run_solver(program, language, config):
         "--program-name", program,
         "--language", language
     ]
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
-        return result.returncode == 0
-    except KeyboardInterrupt:
-        raise  # Re-raise to propagate ctrl+c
-    except:
-        return False
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+    if result.returncode != 0:
+        print(f"❌ Error running solver for {program}:")
+        print("STDOUT:")
+        print(result.stdout)
+        print("STDERR:")
+        print(result.stderr)
+    return result.returncode == 0
+    # except KeyboardInterrupt:
+    #     raise  # Re-raise to propagate ctrl+c
+    # except:
+    #     return False
 
 def main():
     parser = argparse.ArgumentParser(description='Orchestrate fixing of buggy programs')
     parser.add_argument('--language', type=str, choices=['python', 'java'], 
                        default='python', help='Programming language (default: python)')
+    parser.add_argument('--run_name', type=str, 
+                       default='run1', help='Run name (default: run1)')
+    
     args = parser.parse_args()
     
     # Get language-specific configuration
-    config = get_language_config(args.language)
+    config = get_language_config(args.language, args.run_name)
     
     # Load program list from language-specific test counts file
     if not config["test_counts_file"].exists():
