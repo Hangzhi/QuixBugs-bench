@@ -26,7 +26,7 @@ public class LIS {
 
             int length = !prefix_lengths.isEmpty() ? Collections.max(prefix_lengths) : 0;
 
-            if (length == longest || (length+1 <= longest && val < arr[ends.get(length+1)])) {
+            if (length + 1 > longest || val < arr[ends.get(length+1)]) {
                 ends.put(length+1, i);
                 longest = length + 1;
             }

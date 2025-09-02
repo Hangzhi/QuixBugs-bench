@@ -20,7 +20,7 @@ public class LEVENSHTEIN {
                     levenshtein(source,              target.substring(1)),
                     levenshtein(source.substring(1), target.substring(1))),
                     levenshtein(source.substring(1), target)
-            );
+        );
         }
     }
 }

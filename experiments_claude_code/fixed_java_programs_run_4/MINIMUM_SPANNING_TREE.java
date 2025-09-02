@@ -24,9 +24,7 @@ public class MINIMUM_SPANNING_TREE {
             if (groupByNode.get(vertex_u) != groupByNode.get(vertex_v)) {
                 minSpanningTree.add(edge);
                 groupByNode = update(groupByNode, vertex_u, vertex_v);
-                for (Node node : groupByNode.get(vertex_v)) {
-                    groupByNode.put(node, groupByNode.get(vertex_u));
-                }
+                groupByNode.put(vertex_v, groupByNode.get(vertex_u));
             }
         }
         return minSpanningTree;

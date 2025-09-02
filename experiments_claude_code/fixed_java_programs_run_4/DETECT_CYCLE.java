@@ -15,11 +15,13 @@ public class DETECT_CYCLE {
         Node tortoise = node;
 
         while (true) {
-            if (hare == null || hare.getSuccessor() == null || hare.getSuccessor().getSuccessor() == null)
+            if (hare.getSuccessor() == null)
                 return false;
 
             tortoise = tortoise.getSuccessor();
             hare = hare.getSuccessor().getSuccessor();
+            if (hare == null)
+                return false;
 
             if (hare == tortoise)
                 return true;

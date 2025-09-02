@@ -20,6 +20,6 @@ public class POSSIBLE_CHANGE {
 
         int first = coins[0];
         int[] rest = Arrays.copyOfRange(coins, 1, coins.length);
-        return possible_change(rest, total) + possible_change(coins, total-first);
+        return possible_change(rest, total-first) + possible_change(rest, total);
     }
 }

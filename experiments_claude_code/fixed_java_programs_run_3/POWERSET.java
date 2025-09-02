@@ -18,15 +18,13 @@ public class POWERSET {
             ArrayList rest = arr;
             ArrayList<ArrayList> rest_subsets = powerset(rest);
 
-            ArrayList<ArrayList> output = new ArrayList<ArrayList>(rest_subsets);
+            ArrayList<ArrayList> output = new ArrayList<ArrayList>(100);
             ArrayList to_add = new ArrayList(100);
             to_add.add(first);
             for (ArrayList subset : rest_subsets) {
-                ArrayList new_subset = new ArrayList(subset);
-                new_subset.add(first);
-                output.add(new_subset);
+                to_add.addAll(subset);
             }
-            output.add(to_add);
+            output.addAll(rest_subsets); output.add(to_add);
 
             return output;
         } else {

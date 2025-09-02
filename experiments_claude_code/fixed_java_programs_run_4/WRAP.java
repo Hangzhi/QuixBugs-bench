@@ -25,10 +25,10 @@ public class WRAP {
                 end = cols;
             }
             line = text.substring(0,end);
-            text = text.substring(end).trim();
+            text = text.substring(end);
             lines.add(line);
         }
 
-        return lines;
+        lines.add(text); return lines;
     }
 }
