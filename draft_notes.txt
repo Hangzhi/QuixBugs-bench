@@ -77,3 +77,5 @@ java_programs_utils/WeightedEdge.java
 gradle test --tests java_testcases.junit.{program}_TEST
 
 python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_0
+
+experiments_claude_code/fixed_java_programs_run_4
