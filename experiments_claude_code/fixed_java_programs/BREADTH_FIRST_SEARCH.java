@@ -1,4 +1,4 @@
-package fixed_java_programs;
+package java_programs;
 import java.util.*;
 import java.util.ArrayDeque;
 
