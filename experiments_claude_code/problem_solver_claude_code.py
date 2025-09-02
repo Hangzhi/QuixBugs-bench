@@ -39,7 +39,7 @@ class ClaudeCodeAgent:
     
     def run_agent(self, instruction: str, working_dir: Path) -> Dict[str, Any]:
         # Use shlex.quote to properly escape the instruction
-        command = (f"timeout 120 claude --verbose --output-format stream-json "
+        command = (f"timeout 600 claude --verbose --output-format stream-json "
                   f"-p {shlex.quote(instruction)} --allowedTools {' '.join(self.ALLOWED_TOOLS)}")
         
         start_time = time.time()

@@ -53,8 +53,15 @@ generate 3 python sol
 python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs 
 python3 run_all_python_tests.py --program-folder experiments_claude_code.fixed_python_programs
 
-python3 experiments_claude_code/orchestrator_claude_code.py --language java
-python3 experiments_claude_code/orchestrator_claude_code.py --language python
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_0
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_1
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_2
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_3
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_4
+
+
+
+python3 experiments_claude_code/orchestrator_claude_code.py --language python 
 
 
 give me a self-contained shell to test experiments_claude_code/fixed_java_programs/BITCOUNT.java
@@ -68,3 +75,5 @@ the shell should not read any external file when executing
 java_programs_utils/WeightedEdge.java
 
 gradle test --tests java_testcases.junit.{program}_TEST
+
+python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_0

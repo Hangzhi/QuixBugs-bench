@@ -48,11 +48,28 @@ def run_solver(program, language, config):
         "--language", language
     ]
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+        if result.returncode != 0:
+            print(f"\n❌ Error running fix_program.py for {program}:")
+            print(f"Return code: {result.returncode}")
+            if result.stdout:
+                print("STDOUT:")
+                print(result.stdout)
+            if result.stderr:
+                print("STDERR:")
+                print(result.stderr)
+            print("-" * 50)
         return result.returncode == 0
     except KeyboardInterrupt:
         raise # Re-raise to propagate ctrl+c
-    except:
+    except Exception as e:
+        print(f"\n❌ Exception running fix_program.py for {program}:")
+        print(f"Exception type: {type(e).__name__}")
+        print(f"Exception message: {str(e)}")
+        import traceback
+        print("Full traceback:")
+        traceback.print_exc()
+        print("-" * 50)
         return False
 
 def main():
