@@ -136,8 +136,7 @@ def solve_problem(
 1. Read the buggy program from: {program_name}.java
 2. Analyze the code to identify the ONE line that contains a bug
 3. Fix ONLY that buggy line with a minimal change
-4. Write the complete fixed program to fixed_{program_name}.java
-5. The package should be package fixed_java_programs rather than java_programs 
+4. Write the complete fixed program to {program_name}.java
 
 Requirements:
 1. The fix should be exactly one line change
@@ -165,7 +164,7 @@ Requirements:
         
         # Check if the fixed program was created
         fixed_python_program_path = fixed_folder / f"{program_name}{extension}"
-        temp_fixed_path = temp_path / f"fixed_{program_name}{extension}"
+        temp_fixed_path = temp_path / f"fixed_{program_name}{extension}" if language.lower() == "python" else temp_path / f"{program_name}{extension}"
         success = False
         error = None
         

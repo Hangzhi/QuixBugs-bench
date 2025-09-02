@@ -162,7 +162,7 @@ def temporarily_move_conflicting_folders(target_folder):
     # Move original java_programs folder if it exists (to avoid conflicts)
     if target_folder and "fixed_java_programs" in target_folder:
         if java_programs_path.exists():
-            temp_java_programs = Path("/tmp/java_programs_backup")
+            temp_java_programs = Path("/tmp/java_programs")
             # Remove old backup if exists
             if temp_java_programs.exists():
                 shutil.rmtree(temp_java_programs)
