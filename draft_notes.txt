@@ -64,3 +64,7 @@ the shell should setup a test project for testing experiments_claude_code/fixed_
 it can be verbose and include the text in BITCOUNT_TEST and QuixFixOracleHelper.java
 
 the shell should not read any external file when executing 
+
+java_programs_utils/WeightedEdge.java
+
+gradle test --tests java_testcases.junit.{program}_TEST

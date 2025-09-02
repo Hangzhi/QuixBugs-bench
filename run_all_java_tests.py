@@ -63,7 +63,7 @@ def calculate_diff_lines(program_name, program_folder):
     """Calculate number of different lines between tested program and buggy version."""
     try:
         # Compare against buggy version (not correct version) for fixed programs
-        original_program_path = f"/home/ubuntu/QuixBugs-bench/java_programs/{program_name}.java"
+        original_program_path = f"/tmp/java_programs/{program_name}.java"
         
         # Path to tested version
         if program_folder:
@@ -147,17 +147,61 @@ def parse_html_report_from_path(report_path):
     
     return 0, 0, False
 
-def run_fixed_program_test(program_name, program_folder, timeout=10):
-    """Run tests for fixed programs using separate test project."""
-    test_project = Path("/home/ubuntu/QuixBugs-bench/fixed_java_test_project")
+def temporarily_move_conflicting_folders(target_folder):
+    """Move conflicting folders to /tmp to avoid duplicate class definitions."""
+    moved_folders = []
+    experiments_path = Path("/home/ubuntu/QuixBugs-bench/experiments_claude_code")
+    java_programs_path = Path("/home/ubuntu/QuixBugs-bench/java_programs")
     
-    # Ensure test project exists
-    if not test_project.exists():
-        print(f"Warning: Test project not found at {test_project}")
-        # Fallback to regular approach
-        gradle_task = "test"
-        test_class = f"java_testcases.junit.{program_name}_TEST"
-        cmd = ["gradle", gradle_task, "--tests", test_class, "--rerun-tasks"]
+    # Convert target_folder to absolute path for comparison
+    target_folder_abs = Path(target_folder).resolve() if target_folder else None
+    
+    # Create temp directories if they don't exist
+    Path("/tmp/experiments_claude_code").mkdir(parents=True, exist_ok=True)
+    
+    # Move original java_programs folder if it exists (to avoid conflicts)
+    if target_folder and "fixed_java_programs" in target_folder:
+        if java_programs_path.exists():
+            temp_java_programs = Path("/tmp/java_programs_backup")
+            # Remove old backup if exists
+            if temp_java_programs.exists():
+                shutil.rmtree(temp_java_programs)
+            # Move original java_programs to backup
+            shutil.move(str(java_programs_path), str(temp_java_programs))
+            moved_folders.append((str(java_programs_path), str(temp_java_programs)))
+            print(f"  Moved original java_programs to /tmp")
+    
+    # Find all fixed_java_programs* folders in experiments_claude_code except the target
+    if experiments_path.exists():
+        for folder in experiments_path.glob("fixed_java_programs*"):
+            # Don't move the folder we're testing
+            if not target_folder_abs or folder.resolve() != target_folder_abs:
+                if folder.is_dir():
+                    temp_path = Path("/tmp/experiments_claude_code") / folder.name
+                    if folder.exists():
+                        shutil.move(str(folder), str(temp_path))
+                        moved_folders.append((str(folder), str(temp_path)))
+                        print(f"  Temporarily moved: {folder.name}")
+    
+    if target_folder and "fixed_java_programs" in target_folder:
+        print(f"  Using fixed programs from: {target_folder}")
+    
+    return moved_folders
+
+def restore_moved_folders(moved_folders):
+    """Restore folders that were temporarily moved."""
+    for original_path, temp_path in moved_folders:
+        if Path(temp_path).exists():
+            # Simply move back from temp location
+            shutil.move(temp_path, original_path)
+            print(f"  Restored: {Path(original_path).name}")
+
+def run_fixed_program_test(program_name, program_folder, timeout=10):
+    """Run tests for fixed programs using root gradle project."""
+    
+    # Verify the program file exists
+    source_path = Path(program_folder) / f"{program_name}.java"
+    if not source_path.exists():
         return {
             "program": program_name,
             "status": "ERROR",
@@ -165,70 +209,24 @@ def run_fixed_program_test(program_name, program_folder, timeout=10):
             "skipped": 0,
             "failed": 0,
             "return_code": -1,
-            "error": "Test project not found",
-            "command": " ".join(cmd),
+            "error": "Program file not found",
+            "command": "N/A",
             "diff_line_count": -1,
-            "gradle_task": gradle_task
+            "gradle_task": "test"
         }
     
     try:
-        # Clean previous test files
-        subprocess.run(f"rm -f {test_project}/java_programs/*.java", shell=True, check=False)
-        subprocess.run(f"rm -f {test_project}/java_testcases/junit/*_TEST.java", shell=True, check=False)
-        
-        # Copy the fixed program
-        source_path = Path(program_folder) / f"{program_name}.java"
-        target_path = test_project / "java_programs" / f"{program_name}.java"
-        
-        if not source_path.exists():
-            return {
-                "program": program_name,
-                "status": "ERROR",
-                "passed": 0,
-                "skipped": 0,
-                "failed": 0,
-                "return_code": -1,
-                "error": "Program file not found",
-                "command": "N/A",
-                "diff_line_count": -1,
-                "gradle_task": "test"
-            }
-        
-        # Copy and fix package declaration
-        with open(source_path, 'r') as f:
-            content = f.read()
-        
-        # Change package to java_programs if needed
-        content = re.sub(r'^package\s+\w+;', 'package java_programs;', content, flags=re.MULTILINE)
-        
-        with open(target_path, 'w') as f:
-            f.write(content)
-        
-        # Copy support files
-        for support_file in ['Node.java', 'WeightedEdge.java']:
-            support_src = Path("/home/ubuntu/QuixBugs-bench/java_programs") / support_file
-            if support_src.exists():
-                shutil.copy2(support_src, test_project / "java_programs" / support_file)
-        
-        # Copy test file
-        test_src = Path("/home/ubuntu/QuixBugs-bench/java_testcases/junit") / f"{program_name}_TEST.java"
-        if test_src.exists():
-            shutil.copy2(test_src, test_project / "java_testcases/junit" / f"{program_name}_TEST.java")
-        
-        # Copy helper
-        helper_src = Path("/home/ubuntu/QuixBugs-bench/java_testcases/junit/QuixFixOracleHelper.java")
-        if helper_src.exists():
-            shutil.copy2(helper_src, test_project / "java_testcases/junit/QuixFixOracleHelper.java")
-        
-        # Run gradle test in the test project
-        cmd = ["gradle", "test", "--tests", f"java_testcases.junit.{program_name}_TEST", "--rerun-tasks"]
+        # Run gradle test directly - gradle will compile from the fixed_java_programs folder
+        gradle_task = "test"
+        test_class = f"java_testcases.junit.{program_name}_TEST"
+        cmd = ["gradle", gradle_task, "--tests", test_class, "--rerun-tasks"]
         
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
             timeout=timeout,
-            cwd=test_project
+            cwd="/home/ubuntu/QuixBugs-bench"
         )
         
         output = result.stdout + result.stderr
@@ -238,8 +236,8 @@ def run_fixed_program_test(program_name, program_folder, timeout=10):
         passed = failed = skipped = 0
         
         if "BUILD SUCCESSFUL" in output:
-            # Parse HTML report from test project
-            passed, failed, tests_ran = parse_html_report_from_path(test_project / "build/reports/tests/test/index.html")
+            # Parse HTML report from root project
+            passed, failed, tests_ran = parse_html_report(gradle_task)
             
             if tests_ran:
                 status = "PASSED" if failed == 0 else "FAILED"
@@ -247,7 +245,7 @@ def run_fixed_program_test(program_name, program_folder, timeout=10):
                 status = "NO_TESTS"
         elif "BUILD FAILED" in output:
             # Parse HTML report even for failed builds
-            passed, failed, tests_ran = parse_html_report_from_path(test_project / "build/reports/tests/test/index.html")
+            passed, failed, tests_ran = parse_html_report(gradle_task)
             
             if tests_ran:
                 status = "FAILED"
@@ -269,7 +267,7 @@ def run_fixed_program_test(program_name, program_folder, timeout=10):
             "return_code": result.returncode,
             "command": " ".join(cmd),
             "diff_line_count": diff_count,
-            "gradle_task": "test"
+            "gradle_task": gradle_task
         }
         
     except subprocess.TimeoutExpired:
@@ -420,6 +418,15 @@ def main():
     
     args = parser.parse_args()
     
+    # Check if we're testing fixed programs
+    is_fixed_folder = args.program_folder and "fixed_java_programs" in args.program_folder.lower()
+    
+    # Move folders ONCE before all tests if testing fixed programs
+    moved_folders = []
+    if is_fixed_folder:
+        print("Preparing test environment...")
+        moved_folders = temporarily_move_conflicting_folders(args.program_folder)
+    
     # Convert program names to uppercase if specified
     if args.programs:
         programs_to_test = [p.upper() for p in args.programs]
@@ -513,6 +520,11 @@ def main():
     print(f"  ⚠ Errors:   {error_count}/{len(programs_to_test)}")
     print(f"  ⏱ Timeouts:  {timeout_count}/{len(programs_to_test)}")
     print(f"  ⊘ No Tests: {no_tests_count}/{len(programs_to_test)}")
+    
+    # Restore folders ONCE after all tests if we moved them
+    if moved_folders:
+        print("\nRestoring original folders...")
+        restore_moved_folders(moved_folders)
     
     # Return non-zero exit code if there were failures
     sys.exit(0 if failed_count == 0 and error_count == 0 and timeout_count == 0 else 1)
