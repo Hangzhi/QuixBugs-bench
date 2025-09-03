@@ -12,16 +12,16 @@ This repository includes tools for benchmarking LLM agents (like Claude Code) on
 - **Compare performance** across different models and approaches
 
 **Latest Results:** 
-- **Python:** Claude Code achieved **86.5 ± 2% success rate** with minimal one-line fixes
+- **Python:** Claude Code achieved **86.5 ± 2.0% success rate** with minimal one-line fixes
   - [Agent Log](experiments_claude_code/fixed_python_programs/agent_log_claude.json)
-  - [Run1 - Run5](experiments_claude_code/fixed_python_programs/)
-- **Java:** Claude Code achieved **75.0% success rate** (30/40 programs) with minimal one-line fixes
+  - [Run1 - Run5](experiments_claude_code/)
+- **Java:** Claude Code achieved **75.0 ± 3.06% success rate** with minimal one-line fixes
   - [Agent Log](experiments_claude_code/fixed_java_programs/agent_log_claude.json)
-  - [Test Results (Scored)](experiments_claude_code/fixed_java_programs/test_results_2025_08_30_075919_scored.json)
+  - [Run1 - Run5](experiments_claude_code/)
 
 **Quick Start - Python:**
 ```bash
-python3 experiments_claude_code/orchestrator_claude_code.py && python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs && python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_*.json
+python3 experiments_claude_code/orchestrator_claude_code.py --language python && python3 run_all_python_tests.py --program-folder experiments_claude_code/fixed_python_programs && python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_*.json
 ```
 
 **Quick Start - Java:**
@@ -46,8 +46,6 @@ python3 experiments_claude_code/problem_solver_claude_code.py \
 **Java Example:**
 ```bash
 python3 experiments_claude_code/problem_solver_claude_code.py \
-    --buggy-program-folder java_programs \
-    --fixed-program-folder experiments_claude_code/fixed_java_programs \
     --program-name BITCOUNT \
     --language java
 ```
@@ -65,10 +63,21 @@ python3 experiments_claude_code/orchestrator_claude_code.py --language python
 python3 experiments_claude_code/orchestrator_claude_code.py --language java
 ```
 
-### 3. run_all_tests.py (Python)
+**Multiple Runs (for experiments):**
+```bash
+# Run multiple experiments with different run names
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_0
+python3 experiments_claude_code/orchestrator_claude_code.py --language java --run_name run_1
+
+# Test each run's results
+python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_0
+python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_1
+```
+
+### 3. run_all_python_tests.py (Python)
 Test fixed Python programs and generate results with diff analysis.
 ```bash
-python3 run_all_python_tests.py --program-folder experiments_claude_code.fixed_python_programs
+python3 run_all_python_tests.py --program-folder experiments_claude_code/fixed_python_programs
 ```
 
 ### 4. run_all_java_tests.py (Java)
@@ -111,7 +120,7 @@ python3 test_result_scorer.py experiments_claude_code/fixed_java_programs/test_r
 python3 experiments_claude_code/orchestrator_claude_code.py --language python
 
 # 2. Test the fixed programs
-python3 run_all_tests.py --program-folder experiments_claude_code.fixed_python_programs
+python3 run_all_python_tests.py --program-folder experiments_claude_code/fixed_python_programs
 
 # 3. Score the results
 python3 test_result_scorer.py experiments_claude_code/fixed_python_programs/test_results_*.json
