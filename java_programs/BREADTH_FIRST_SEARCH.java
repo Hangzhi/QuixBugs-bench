@@ -39,7 +39,7 @@ public class BREADTH_FIRST_SEARCH {
          * The buggy program always drops into while(true) loop and will not return false
          * Removed below line to fix compilation error
          */
-        return false;
+        // return false;
     }
 
 }
