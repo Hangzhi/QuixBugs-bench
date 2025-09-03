@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "timestamp": "2025-09-03T06:54:54.666468",
+    "program_folder": "java_programs",
+    "timeout": 10,
+    "total_programs": 1
+  },
+  "results": [
+    {
+      "program": "LCS_LENGTH",
+      "status": "FAILED",
+      "passed": 5,
+      "skipped": 0,
+      "failed": 0,
+      "return_code": 1,
+      "command": "gradle test --tests java_testcases.junit.LCS_LENGTH_TEST --rerun-tasks",
+      "diff_line_count": -1,
+      "gradle_task": "test"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "timeouts": 0,
+    "no_tests": 0,
+    "total": 1
+  }
+}

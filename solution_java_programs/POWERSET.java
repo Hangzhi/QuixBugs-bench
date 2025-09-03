@@ -20,7 +20,7 @@ public class POWERSET {
 
             ArrayList<ArrayList> output = new ArrayList<ArrayList>(100);
             ArrayList to_add = new ArrayList(100);
-            to_add.add(first);
+
             for (ArrayList subset : rest_subsets) {
                 ArrayList r = new ArrayList();
                 r.add(first);

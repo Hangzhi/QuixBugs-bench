@@ -21,7 +21,7 @@ public class BREADTH_FIRST_SEARCH {
 
         nodesvisited.add(startnode);
 
-        while (true) {
+        while (!queue.isEmpty()) {
             Node node = queue.removeFirst();
 
             if (node == goalnode) {

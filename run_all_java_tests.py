@@ -152,6 +152,7 @@ def temporarily_move_conflicting_folders(target_folder):
     moved_folders = []
     experiments_path = Path("/home/ubuntu/QuixBugs-bench/experiments_claude_code")
     java_programs_path = Path("/home/ubuntu/QuixBugs-bench/java_programs")
+    solution_java_programs_path = Path("/home/ubuntu/QuixBugs-bench/solution_java_programs")
     
     # Convert target_folder to absolute path for comparison
     target_folder_abs = Path(target_folder).resolve() if target_folder else None
@@ -159,8 +160,20 @@ def temporarily_move_conflicting_folders(target_folder):
     # Create temp directories if they don't exist
     Path("/tmp/experiments_claude_code").mkdir(parents=True, exist_ok=True)
     
+    # Move solution_java_programs folder when running tests on java_programs
+    if "solution_java_programs" not in target_folder:
+        if solution_java_programs_path.exists():
+            temp_solution_java_programs = Path("/tmp/solution_java_programs")
+            # Remove old backup if exists
+            if temp_solution_java_programs.exists():
+                shutil.rmtree(temp_solution_java_programs)
+            # Move solution_java_programs to backup
+            shutil.move(str(solution_java_programs_path), str(temp_solution_java_programs))
+            moved_folders.append((str(solution_java_programs_path), str(temp_solution_java_programs)))
+            print(f"  Moved solution_java_programs to /tmp")
+    
     # Move original java_programs folder if it exists (to avoid conflicts)
-    if target_folder and "fixed_java_programs" in target_folder:
+    if target_folder and ("fixed_java_programs" in target_folder or "solution_java_programs" in target_folder):
         if java_programs_path.exists():
             temp_java_programs = Path("/tmp/java_programs")
             # Remove old backup if exists
@@ -173,7 +186,7 @@ def temporarily_move_conflicting_folders(target_folder):
     
     # Find all fixed_java_programs* folders in experiments_claude_code except the target
     if experiments_path.exists():
-        for folder in experiments_path.glob("fixed_java_programs*"):
+        for folder in experiments_path.glob("fixed_java_programs*") or ("java_programs" in target_folder or "solution_java_programs" in target_folder) :
             # Don't move the folder we're testing
             if not target_folder_abs or folder.resolve() != target_folder_abs:
                 if folder.is_dir():
@@ -183,7 +196,7 @@ def temporarily_move_conflicting_folders(target_folder):
                         moved_folders.append((str(folder), str(temp_path)))
                         print(f"  Temporarily moved: {folder.name}")
     
-    if target_folder and "fixed_java_programs" in target_folder:
+    if target_folder and ("fixed_java_programs" in target_folder or "solution_java_programs" in target_folder):
         print(f"  Using fixed programs from: {target_folder}")
     
     return moved_folders
@@ -301,8 +314,8 @@ def run_fixed_program_test(program_name, program_folder, timeout=10):
 def run_test(program_name, program_folder=None, timeout=10):
     """Run gradle test for a specific program and return the results."""
     
-    # Check if this is a fixed program folder
-    is_fixed_folder = program_folder and "fixed_java_programs" in program_folder.lower()
+    # Check if this is a fixed program folder (including solution_java_programs)
+    is_fixed_folder = program_folder and ("fixed_java_programs" in program_folder.lower() or "solution_java_programs" in program_folder.lower())
     
     if is_fixed_folder:
         # Use separate test project for fixed programs
@@ -418,14 +431,14 @@ def main():
     
     args = parser.parse_args()
     
-    # Check if we're testing fixed programs
-    is_fixed_folder = args.program_folder and "fixed_java_programs" in args.program_folder.lower()
+    # Check if we're testing fixed programs (including solution_java_programs)
+    is_fixed_folder = args.program_folder and ("fixed_java_programs" in args.program_folder.lower() or "solution_java_programs" in args.program_folder.lower())
     
     # Move folders ONCE before all tests if testing fixed programs
     moved_folders = []
-    if is_fixed_folder:
-        print("Preparing test environment...")
-        moved_folders = temporarily_move_conflicting_folders(args.program_folder)
+    
+    print("Preparing test environment...")
+    moved_folders = temporarily_move_conflicting_folders(args.program_folder)
     
     # Convert program names to uppercase if specified
     if args.programs:

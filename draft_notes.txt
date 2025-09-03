@@ -66,6 +66,7 @@ python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_jav
 python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_3
 python3 run_all_java_tests.py --program-folder experiments_claude_code/fixed_java_programs_run_4
 
+python3 run_all_java_tests.py --program-folder QuixBugs-bench/solution_java_programs
 
 python3 test_result_scorer.py experiments_claude_code/fixed_java_programs_run_0/test_results_2025_09_02_204508.json 30/40 = 75%
 python3 test_result_scorer.py experiments_claude_code/fixed_java_programs_run_1/test_results_2025_09_02_204717.json 32/40 = 80%
@@ -73,6 +74,9 @@ python3 test_result_scorer.py experiments_claude_code/fixed_java_programs_run_2/
 python3 test_result_scorer.py experiments_claude_code/fixed_java_programs_run_3/test_results_2025_09_02_212050.json 29/40 = 72.5%
 python3 test_result_scorer.py experiments_claude_code/fixed_java_programs_run_4/test_results_2025_09_02_214952.json 29/40 = 72.5%
 
+python3 test_result_scorer.py solution_java_programs/test_results_2025_09_03_060730.json
+python3 test_result_scorer.py solution_java_programs/test_results_2025_09_03_064118.json
+python3 test_result_scorer.py solution_java_programs/test_results_2025_09_03_070404.json
 python3 experiments_claude_code/orchestrator_claude_code.py --language python 
 
 
